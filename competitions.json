@@ -1,0 +1,1016 @@
+[
+  {
+    "id": 2166,
+    "area": "Africa",
+    "name": "AFC Champions League",
+    "code": "ACL"
+  },
+  {
+    "id": 2006,
+    "area": "Africa",
+    "name": "WC Qualification CAF",
+    "code": "QCAF"
+  },
+  {
+    "id": 2023,
+    "area": "Argentina",
+    "name": "Primera B Nacional",
+    "code": null
+  },
+  {
+    "id": 2024,
+    "area": "Argentina",
+    "name": "Liga Profesional",
+    "code": "ASL"
+  },
+  {
+    "id": 2149,
+    "area": "Argentina",
+    "name": "Copa Liga Profesional",
+    "code": null
+  },
+  {
+    "id": 2025,
+    "area": "Argentina",
+    "name": "Supercopa Argentina",
+    "code": null
+  },
+  {
+    "id": 2147,
+    "area": "Asia",
+    "name": "WC Qualification AFC",
+    "code": "QAFC"
+  },
+  {
+    "id": 2008,
+    "area": "Australia",
+    "name": "A League",
+    "code": "AAL"
+  },
+  {
+    "id": 2026,
+    "area": "Australia",
+    "name": "FFA Cup",
+    "code": null
+  },
+  {
+    "id": 2020,
+    "area": "Austria",
+    "name": "Erste Liga",
+    "code": null
+  },
+  {
+    "id": 2012,
+    "area": "Austria",
+    "name": "Bundesliga",
+    "code": "ABL"
+  },
+  {
+    "id": 2022,
+    "area": "Austria",
+    "name": "Playoffs 1/2",
+    "code": "APL"
+  },
+  {
+    "id": 2027,
+    "area": "Austria",
+    "name": "ÖFB Cup",
+    "code": null
+  },
+  {
+    "id": 2028,
+    "area": "Belgium",
+    "name": "Coupe de Belgique",
+    "code": null
+  },
+  {
+    "id": 2033,
+    "area": "Belgium",
+    "name": "Division 1B",
+    "code": null
+  },
+  {
+    "id": 2009,
+    "area": "Belgium",
+    "name": "Jupiler Pro League",
+    "code": "BJL"
+  },
+  {
+    "id": 2010,
+    "area": "Belgium",
+    "name": "Supercoupe de Belgique",
+    "code": null
+  },
+  {
+    "id": 2032,
+    "area": "Belgium",
+    "name": "Playoffs",
+    "code": "BJPP"
+  },
+  {
+    "id": 2034,
+    "area": "Bolivia",
+    "name": "LFPB",
+    "code": null
+  },
+  {
+    "id": 2035,
+    "area": "Bosnia and Herzegovina",
+    "name": "Premier Liga",
+    "code": null
+  },
+  {
+    "id": 2037,
+    "area": "Brazil",
+    "name": "Copa do Brasil",
+    "code": "CDB"
+  },
+  {
+    "id": 2038,
+    "area": "Brazil",
+    "name": "Série D",
+    "code": null
+  },
+  {
+    "id": 2036,
+    "area": "Brazil",
+    "name": "Série C",
+    "code": null
+  },
+  {
+    "id": 2029,
+    "area": "Brazil",
+    "name": "Campeonato Brasileiro Série B",
+    "code": "BSB"
+  },
+  {
+    "id": 2013,
+    "area": "Brazil",
+    "name": "Campeonato Brasileiro Série A",
+    "code": "BSA"
+  },
+  {
+    "id": 2039,
+    "area": "Bulgaria",
+    "name": "Kupa na Bulgarija",
+    "code": null
+  },
+  {
+    "id": 2040,
+    "area": "Bulgaria",
+    "name": "A PFG",
+    "code": null
+  },
+  {
+    "id": 2041,
+    "area": "Canada",
+    "name": "Canadian Championship",
+    "code": null
+  },
+  {
+    "id": 2042,
+    "area": "Chile",
+    "name": "Playoffs 1/2",
+    "code": null
+  },
+  {
+    "id": 2043,
+    "area": "Chile",
+    "name": "Supercopa de Chile",
+    "code": null
+  },
+  {
+    "id": 2048,
+    "area": "Chile",
+    "name": "Primera División",
+    "code": "CPD"
+  },
+  {
+    "id": 2044,
+    "area": "China PR",
+    "name": "Chinese Super League",
+    "code": "CSL"
+  },
+  {
+    "id": 2045,
+    "area": "Colombia",
+    "name": "Liga Postobón",
+    "code": "CLP"
+  },
+  {
+    "id": 2046,
+    "area": "Colombia",
+    "name": "Superliga de Colombia",
+    "code": null
+  },
+  {
+    "id": 2047,
+    "area": "Croatia",
+    "name": "Prva Liga",
+    "code": "PRVA"
+  },
+  {
+    "id": 2049,
+    "area": "Czech Republic",
+    "name": "Synot Liga",
+    "code": null
+  },
+  {
+    "id": 2051,
+    "area": "Denmark",
+    "name": "DBU Pokalen",
+    "code": null
+  },
+  {
+    "id": 2050,
+    "area": "Denmark",
+    "name": "Superliga",
+    "code": "DSU"
+  },
+  {
+    "id": 2141,
+    "area": "Denmark",
+    "name": "Euro League - Playoff",
+    "code": "DELP"
+  },
+  {
+    "id": 2052,
+    "area": "Ecuador",
+    "name": "Copa Pilsener Serie A",
+    "code": null
+  },
+  {
+    "id": 2139,
+    "area": "England",
+    "name": "Football League Cup",
+    "code": "FLC"
+  },
+  {
+    "id": 2056,
+    "area": "England",
+    "name": "FA Community Shield",
+    "code": "COM"
+  },
+  {
+    "id": 2055,
+    "area": "England",
+    "name": "FA Cup",
+    "code": "FAC"
+  },
+  {
+    "id": 2053,
+    "area": "England",
+    "name": "National League",
+    "code": "ENL"
+  },
+  {
+    "id": 2054,
+    "area": "England",
+    "name": "League Two",
+    "code": "EL2"
+  },
+  {
+    "id": 2030,
+    "area": "England",
+    "name": "League One",
+    "code": "EL1"
+  },
+  {
+    "id": 2016,
+    "area": "England",
+    "name": "Championship",
+    "code": "ELC"
+  },
+  {
+    "id": 2021,
+    "area": "England",
+    "name": "Premier League",
+    "code": "PL"
+  },
+  {
+    "id": 2057,
+    "area": "Estonia",
+    "name": "Meistriliiga",
+    "code": null
+  },
+  {
+    "id": 2146,
+    "area": "Europe",
+    "name": "UEFA Europa League",
+    "code": "EL"
+  },
+  {
+    "id": 2001,
+    "area": "Europe",
+    "name": "UEFA Champions League",
+    "code": "CL"
+  },
+  {
+    "id": 2154,
+    "area": "Europe",
+    "name": "UEFA Conference League",
+    "code": "UCL"
+  },
+  {
+    "id": 2018,
+    "area": "Europe",
+    "name": "European Championship",
+    "code": "EC"
+  },
+  {
+    "id": 2007,
+    "area": "Europe",
+    "name": "WC Qualification UEFA",
+    "code": "QUFA"
+  },
+  {
+    "id": 2058,
+    "area": "Europe",
+    "name": "UEFA Women's EURO",
+    "code": null
+  },
+  {
+    "id": 2165,
+    "area": "Europe",
+    "name": "European Championship Qualifiers",
+    "code": "ECQ"
+  },
+  {
+    "id": 2157,
+    "area": "Europe",
+    "name": "Supercup",
+    "code": "ESC"
+  },
+  {
+    "id": 2059,
+    "area": "Finland",
+    "name": "Suomen Cup",
+    "code": null
+  },
+  {
+    "id": 2031,
+    "area": "Finland",
+    "name": "Veikkausliiga",
+    "code": "VEI"
+  },
+  {
+    "id": 2135,
+    "area": "France",
+    "name": "Coupe de la Ligue",
+    "code": null
+  },
+  {
+    "id": 2142,
+    "area": "France",
+    "name": "Ligue 2",
+    "code": "FL2"
+  },
+  {
+    "id": 2015,
+    "area": "France",
+    "name": "Ligue 1",
+    "code": "FL1"
+  },
+  {
+    "id": 2138,
+    "area": "France",
+    "name": "Coupe de France",
+    "code": null
+  },
+  {
+    "id": 2143,
+    "area": "France",
+    "name": "Playoffs 1/2",
+    "code": "FPL"
+  },
+  {
+    "id": 2144,
+    "area": "France",
+    "name": "Playoffs 2/3",
+    "code": null
+  },
+  {
+    "id": 2136,
+    "area": "France",
+    "name": "Trophée des Champions",
+    "code": null
+  },
+  {
+    "id": 2011,
+    "area": "Germany",
+    "name": "DFB-Pokal",
+    "code": "DFB"
+  },
+  {
+    "id": 2129,
+    "area": "Germany",
+    "name": "Regionalliga",
+    "code": "REG"
+  },
+  {
+    "id": 2140,
+    "area": "Germany",
+    "name": "3. Bundesliga",
+    "code": "BL3"
+  },
+  {
+    "id": 2004,
+    "area": "Germany",
+    "name": "2. Bundesliga",
+    "code": "BL2"
+  },
+  {
+    "id": 2002,
+    "area": "Germany",
+    "name": "Bundesliga",
+    "code": "BL1"
+  },
+  {
+    "id": 2168,
+    "area": "Germany",
+    "name": "Regionalliga West",
+    "code": "RLW"
+  },
+  {
+    "id": 2159,
+    "area": "Germany",
+    "name": "Regionalliga Bayern",
+    "code": "RBY"
+  },
+  {
+    "id": 2133,
+    "area": "Germany",
+    "name": "Frauen Bundesliga",
+    "code": null
+  },
+  {
+    "id": 2160,
+    "area": "Germany",
+    "name": "Regionalliga Südwest",
+    "code": "RSW"
+  },
+  {
+    "id": 2156,
+    "area": "Germany",
+    "name": "Relegation",
+    "code": "BLREL"
+  },
+  {
+    "id": 2134,
+    "area": "Germany",
+    "name": "DFL Super Cup",
+    "code": "GSC"
+  },
+  {
+    "id": 2131,
+    "area": "Greece",
+    "name": "Greek Cup",
+    "code": null
+  },
+  {
+    "id": 2132,
+    "area": "Greece",
+    "name": "Super League",
+    "code": "GSL"
+  },
+  {
+    "id": 2150,
+    "area": "Greece",
+    "name": "Souper Kap Ellados",
+    "code": null
+  },
+  {
+    "id": 2130,
+    "area": "Hungary",
+    "name": "Magyar Kupa",
+    "code": null
+  },
+  {
+    "id": 2128,
+    "area": "Hungary",
+    "name": "NB I",
+    "code": "HNB"
+  },
+  {
+    "id": 2127,
+    "area": "Iceland",
+    "name": "Úrvalsdeild",
+    "code": null
+  },
+  {
+    "id": 2126,
+    "area": "India",
+    "name": "I-League",
+    "code": null
+  },
+  {
+    "id": 2161,
+    "area": "India",
+    "name": "Indian Super League",
+    "code": "ISL"
+  },
+  {
+    "id": 2125,
+    "area": "Israel",
+    "name": "Ligat ha'Al",
+    "code": "ILH"
+  },
+  {
+    "id": 2124,
+    "area": "Italy",
+    "name": "Supercoppa",
+    "code": "ISC"
+  },
+  {
+    "id": 2122,
+    "area": "Italy",
+    "name": "Coppa Italia",
+    "code": "CIT"
+  },
+  {
+    "id": 2123,
+    "area": "Italy",
+    "name": "Serie C",
+    "code": null
+  },
+  {
+    "id": 2121,
+    "area": "Italy",
+    "name": "Serie B",
+    "code": "SB"
+  },
+  {
+    "id": 2019,
+    "area": "Italy",
+    "name": "Serie A",
+    "code": "SA"
+  },
+  {
+    "id": 2163,
+    "area": "Italy",
+    "name": "Serie C - Girone B",
+    "code": "ISCB"
+  },
+  {
+    "id": 2164,
+    "area": "Italy",
+    "name": "Serie C - Girone C",
+    "code": "ISCC"
+  },
+  {
+    "id": 2162,
+    "area": "Italy",
+    "name": "Serie C - Girone A",
+    "code": "ISCA"
+  },
+  {
+    "id": 2158,
+    "area": "Italy",
+    "name": "Playoffs 1/2",
+    "code": "IPL"
+  },
+  {
+    "id": 2118,
+    "area": "Japan",
+    "name": "J.League Cup",
+    "code": null
+  },
+  {
+    "id": 2117,
+    "area": "Japan",
+    "name": "J. League Division 2",
+    "code": null
+  },
+  {
+    "id": 2119,
+    "area": "Japan",
+    "name": "J. League",
+    "code": "JJL"
+  },
+  {
+    "id": 2120,
+    "area": "Japan",
+    "name": "Super Cup",
+    "code": null
+  },
+  {
+    "id": 2116,
+    "area": "Latvia",
+    "name": "Virslīga",
+    "code": null
+  },
+  {
+    "id": 2115,
+    "area": "Lithuania",
+    "name": "A Lyga",
+    "code": null
+  },
+  {
+    "id": 2114,
+    "area": "Malta",
+    "name": "Premier League",
+    "code": null
+  },
+  {
+    "id": 2111,
+    "area": "Mexico",
+    "name": "Copa MX",
+    "code": null
+  },
+  {
+    "id": 2112,
+    "area": "Mexico",
+    "name": "SuperCopa MX",
+    "code": "SCMX"
+  },
+  {
+    "id": 2113,
+    "area": "Mexico",
+    "name": "Liga MX",
+    "code": "LMX"
+  },
+  {
+    "id": 2109,
+    "area": "Netherlands",
+    "name": "KNVB Beker",
+    "code": "KNV"
+  },
+  {
+    "id": 2005,
+    "area": "Netherlands",
+    "name": "Eerste Divisie",
+    "code": "DJL"
+  },
+  {
+    "id": 2003,
+    "area": "Netherlands",
+    "name": "Eredivisie",
+    "code": "DED"
+  },
+  {
+    "id": 2110,
+    "area": "Netherlands",
+    "name": "Johan Cruijff Schaal",
+    "code": null
+  },
+  {
+    "id": 2108,
+    "area": "Northern Ireland",
+    "name": "League Cup",
+    "code": null
+  },
+  {
+    "id": 2107,
+    "area": "Northern Ireland",
+    "name": "Premiership",
+    "code": "NIP"
+  },
+  {
+    "id": 2106,
+    "area": "Norway",
+    "name": "Tippeligaen",
+    "code": "TIP"
+  },
+  {
+    "id": 2105,
+    "area": "Norway",
+    "name": "1. divisjon",
+    "code": null
+  },
+  {
+    "id": 2104,
+    "area": "Norway",
+    "name": "Playoffs 1/2",
+    "code": null
+  },
+  {
+    "id": 2103,
+    "area": "Oceania",
+    "name": "WC Qualification OFC",
+    "code": "QOFC"
+  },
+  {
+    "id": 2102,
+    "area": "Panama",
+    "name": "Liga Panameña de Fútbol",
+    "code": null
+  },
+  {
+    "id": 2101,
+    "area": "Peru",
+    "name": "Primera División",
+    "code": "PPD"
+  },
+  {
+    "id": 2099,
+    "area": "Poland",
+    "name": "Superpuchar Polski",
+    "code": null
+  },
+  {
+    "id": 2100,
+    "area": "Poland",
+    "name": "Puchar Polski",
+    "code": null
+  },
+  {
+    "id": 2098,
+    "area": "Portugal",
+    "name": "Taça de Portugal",
+    "code": null
+  },
+  {
+    "id": 2096,
+    "area": "Portugal",
+    "name": "Liga2 Cabovisão",
+    "code": null
+  },
+  {
+    "id": 2017,
+    "area": "Portugal",
+    "name": "Primeira Liga",
+    "code": "PPL"
+  },
+  {
+    "id": 2097,
+    "area": "Portugal",
+    "name": "Supertaça Cândido de Oliveira",
+    "code": null
+  },
+  {
+    "id": 2095,
+    "area": "Republic of Ireland",
+    "name": "Premier Division",
+    "code": null
+  },
+  {
+    "id": 2092,
+    "area": "Romania",
+    "name": "Liga II",
+    "code": null
+  },
+  {
+    "id": 2094,
+    "area": "Romania",
+    "name": "Liga I",
+    "code": "RL1"
+  },
+  {
+    "id": 2093,
+    "area": "Romania",
+    "name": "Supercupa României",
+    "code": null
+  },
+  {
+    "id": 2089,
+    "area": "Russia",
+    "name": "Russian Cup",
+    "code": null
+  },
+  {
+    "id": 2088,
+    "area": "Russia",
+    "name": "FNL",
+    "code": null
+  },
+  {
+    "id": 2137,
+    "area": "Russia",
+    "name": "RFPL",
+    "code": "RFPL"
+  },
+  {
+    "id": 2090,
+    "area": "Russia",
+    "name": "Playoffs 1/2",
+    "code": null
+  },
+  {
+    "id": 2091,
+    "area": "Russia",
+    "name": "Russian Super Cup",
+    "code": null
+  },
+  {
+    "id": 2087,
+    "area": "Scotland",
+    "name": "Scottish Cup",
+    "code": null
+  },
+  {
+    "id": 2085,
+    "area": "Scotland",
+    "name": "Championship",
+    "code": null
+  },
+  {
+    "id": 2084,
+    "area": "Scotland",
+    "name": "Premier League",
+    "code": "SPL"
+  },
+  {
+    "id": 2086,
+    "area": "Scotland",
+    "name": "Playoffs 2/3",
+    "code": null
+  },
+  {
+    "id": 2083,
+    "area": "South Africa",
+    "name": "ABSA Premiership",
+    "code": null
+  },
+  {
+    "id": 2152,
+    "area": "South America",
+    "name": "Copa Libertadores",
+    "code": "CLI"
+  },
+  {
+    "id": 2080,
+    "area": "South America",
+    "name": "Copa America",
+    "code": "CA"
+  },
+  {
+    "id": 2081,
+    "area": "South America",
+    "name": "Copa Sudamericana",
+    "code": null
+  },
+  {
+    "id": 2082,
+    "area": "South America",
+    "name": "WC Qualification CONMEBOL",
+    "code": "QCBL"
+  },
+  {
+    "id": 2079,
+    "area": "Spain",
+    "name": "Copa del Rey",
+    "code": "CDR"
+  },
+  {
+    "id": 2077,
+    "area": "Spain",
+    "name": "Segunda División",
+    "code": "SD"
+  },
+  {
+    "id": 2014,
+    "area": "Spain",
+    "name": "Primera Division",
+    "code": "PD"
+  },
+  {
+    "id": 2078,
+    "area": "Spain",
+    "name": "Supercopa de España",
+    "code": "SDE"
+  },
+  {
+    "id": 2074,
+    "area": "Sweden",
+    "name": "Superettan",
+    "code": null
+  },
+  {
+    "id": 2073,
+    "area": "Sweden",
+    "name": "Allsvenskan",
+    "code": "ALL"
+  },
+  {
+    "id": 2076,
+    "area": "Sweden",
+    "name": "Playoffs 1/2",
+    "code": null
+  },
+  {
+    "id": 2151,
+    "area": "Sweden",
+    "name": "Svenska Supercupen",
+    "code": null
+  },
+  {
+    "id": 2075,
+    "area": "Sweden",
+    "name": "Playoffs 2/3",
+    "code": null
+  },
+  {
+    "id": 2071,
+    "area": "Switzerland",
+    "name": "Schweizer Pokal",
+    "code": null
+  },
+  {
+    "id": 2072,
+    "area": "Switzerland",
+    "name": "Super League",
+    "code": "SSL"
+  },
+  {
+    "id": 2068,
+    "area": "Turkey",
+    "name": "1. Lig",
+    "code": "T1L"
+  },
+  {
+    "id": 2070,
+    "area": "Turkey",
+    "name": "Süper Lig",
+    "code": "TSL"
+  },
+  {
+    "id": 2069,
+    "area": "Turkey",
+    "name": "TFF Süper Kupa",
+    "code": null
+  },
+  {
+    "id": 2065,
+    "area": "Ukraine",
+    "name": "Kubok Ukrainy",
+    "code": null
+  },
+  {
+    "id": 2064,
+    "area": "Ukraine",
+    "name": "Premier Liha",
+    "code": "UPL"
+  },
+  {
+    "id": 2067,
+    "area": "Ukraine",
+    "name": "Superkubok Ukrainy",
+    "code": null
+  },
+  {
+    "id": 2066,
+    "area": "Ukraine",
+    "name": "Playoffs 1/2",
+    "code": null
+  },
+  {
+    "id": 2145,
+    "area": "United States",
+    "name": "MLS",
+    "code": "MLS"
+  },
+  {
+    "id": 2063,
+    "area": "Uruguay",
+    "name": "Primera División",
+    "code": null
+  },
+  {
+    "id": 2148,
+    "area": "Uruguay",
+    "name": "Supercopa Uruguaya",
+    "code": "SUCU"
+  },
+  {
+    "id": 2062,
+    "area": "Venezuela",
+    "name": "Primera División",
+    "code": null
+  },
+  {
+    "id": 2061,
+    "area": "Vietnam",
+    "name": "V-League",
+    "code": null
+  },
+  {
+    "id": 2060,
+    "area": "Wales",
+    "name": "Welsh Premier League",
+    "code": null
+  },
+  {
+    "id": 2000,
+    "area": "World",
+    "name": "FIFA World Cup",
+    "code": "WC"
+  },
+  {
+    "id": 2155,
+    "area": "World",
+    "name": "WC Qualification CONCACAF",
+    "code": "QCCF"
+  },
+  {
+    "id": 2153,
+    "area": "World",
+    "name": "Summer Olympics",
+    "code": "OLY"
+  },
+  {
+    "id": 2167,
+    "area": "World",
+    "name": "FIFA Women's World Cup",
+    "code": "WCF"
+  }
+]
