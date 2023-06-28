@@ -14,8 +14,13 @@ class CompetitionRepository{
     }
     async getTeams(competitionId){
         const result = await axios.get(`${this.url}/${competitionId}/teams`,axiosOptions);
+        if(!result.lenght){
+            throw new Error("No se han encontrado equipos para esta liga");
+        }
         return result.data.teams.map(team=> new Team(team));
     }
+
+    
 }
 
 export default CompetitionRepository;
