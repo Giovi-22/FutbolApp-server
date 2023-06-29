@@ -17,6 +17,7 @@ class CompetitionController{
     
     static async getTeams(req,res){
         try {
+            console.log("dentro de competitions/cid/teams")
             const competitionId = req.params.cid;
             console.log("params: ",competitionId);
             const manager = new CompetitionManager();

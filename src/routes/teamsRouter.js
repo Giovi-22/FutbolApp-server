@@ -5,6 +5,7 @@ const teamRouter = Router();
 
 
 teamRouter.get('/team/:teamName',TeamController.getTeam);
+teamRouter.get('/team/name/:teamName',TeamController.getTeamName);
 //teamRouter.get('/team/:tid/teams',teamController.getTeams);
 /*
 teamRouter.get('/teams/:name',(req,res)=>{

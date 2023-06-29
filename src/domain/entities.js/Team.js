@@ -18,5 +18,9 @@ class Team{
         this.staff = props.staff;
         this.lastUpdated = props.lastUpdated;
     }
+
+    getName(){
+        return this.name;
+    }
 }
 export default Team;
