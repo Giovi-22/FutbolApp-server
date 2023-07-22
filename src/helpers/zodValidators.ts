@@ -7,7 +7,6 @@ export const userZodSchema = z.object
         lastName:z.string({required_error:'lastName is required',invalid_type_error:'lastName must be a string'}),
         email:z.string({required_error:'email is required'}).email({message:'email must be like email@email.com'}),
         password:z.string({required_error:'password is required',invalid_type_error:'password must be a string'}),
-        age:z.number({required_error:'age is required',invalid_type_error:'age must be a number'}),
     }
 );
 

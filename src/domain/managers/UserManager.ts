@@ -3,6 +3,7 @@ import { UserRepository } from "../../data/models/userRepository.interfaces";
 import { hashPassword } from "../../helpers/bcrypt";
 import { userZodSchema } from "../../helpers/zodValidators";
 import UserEntity from "../entities/User";
+import { ApiFilter } from "../interfaces/interfaces";
 
 
 class UserManager
@@ -33,16 +34,17 @@ class UserManager
         const result = await this.#UserRepository.Paginate(filters);
         return result;
     }
-
-    async findByFilter(filter)
+*/
+    async findByFilter(filter:ApiFilter)
     {
         if(!filter.field && !filter.value)
         {
-            throw new Error('Todos los campos deben ser completados',{cause:'Bad Request'});
+            throw new Error('Todos los campos deben ser completados');
         }
         const result = await this.#UserRepository.findByFilter(filter);
         return result;
     }
+    /*
     async getById(uid)
     {
         await idValidation.parseAsync(uid);

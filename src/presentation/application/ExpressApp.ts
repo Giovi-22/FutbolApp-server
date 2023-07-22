@@ -4,9 +4,11 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import cors from 'cors';
 
+import '../../domain/interfaces/custom.interfaces'
 import { config } from '../../config'
-import sessionRouter from '../../routes/sessionRoute';
 import { Application } from './application.interfaces';
+import sessionRouter from '../../routes/sessionRoute';
+import userRouter from '../../routes/userRouter';
 
 
 
@@ -39,8 +41,8 @@ class ExpressApp implements Application{
     }
 
     build(){
-        this.app.use('/api/sessions',sessionRouter);
-        //this.app.use('/api/users',userRouter)
+        this.app.use('/api/session',sessionRouter);
+        this.app.use('/api/users',userRouter)
         //this.app.use(errorHandler);
     }
 

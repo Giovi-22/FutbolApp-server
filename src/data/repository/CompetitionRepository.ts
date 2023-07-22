@@ -1,9 +1,9 @@
 import axios from "axios";
-import { axiosOptions } from "../../config/index.js";
-import { BaseCompetition } from "../../domain/interfaces/interfaces.js";
+import { axiosOptions } from "../../config/index";
+import { BaseCompetition } from "../../domain/interfaces/interfaces";
 import CompetitionEntity from "../../domain/entities/Competition";
 import TeamEntity from "../../domain/entities/Team";
-import { Team } from "../../domain/interfaces/teamInterfaces.js";
+import { Team } from "../../domain/interfaces/teamInterfaces";
 
 class CompetitionRepository extends BaseCompetition{
 

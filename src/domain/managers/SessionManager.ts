@@ -1,22 +1,36 @@
-import { loginValidation } from "../../helpers/zodValidators";
+import container from "../../container";
+import { verifyPassword } from "../../helpers/bcrypt";
+import { jwtGenerator } from "../../helpers/jsonwebtoken";
+import { loginValidation, userZodSchema } from "../../helpers/zodValidators";
 import UserEntity from "../entities/User";
-import { User } from "../interfaces/users.interface";
+import UserManager from "./UserManager";
 
 class SessionManager{
 
-    async logIn(user:User){
-            await loginValidation.parseAsync(user);
-            /*
-        const userM = new UserManager();
-        const userDB = await userM.findByFilter({field:'email',value:user.email});
+    userM;
+
+    constructor(){
+        this.userM = new UserManager();
+    }
+
+    async logIn(user:UserEntity){
+        await loginValidation.parseAsync(user);
+        const userDB = await this.userM.findByFilter({field:'email',value:user.email});
         const isValid = await verifyPassword(userDB.password,user.password);
         if(!isValid)
         {
-            throw new Error('Login failed, invalid password!',{cause:'Bad Request'});
+            throw new Error('Login failed, invalid password!');
         }
-        const userAccessToken = await jwtGenerator({...userDB,password:undefined})
+        const userAccessToken = await jwtGenerator({...userDB,password:""})
         return userAccessToken;
-        */
+    }
+
+    async signUp(user:UserEntity)
+    {
+        await userZodSchema.parseAsync(user);
+        const userM = new UserManager();
+        const newUser = await userM.create(user);
+        return newUser;
     }
 }
 

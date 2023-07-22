@@ -1,7 +1,9 @@
 import { createContainer, asClass, Lifetime } from "awilix";
-import CompetitionRepository from "./data/repository/CompetitionRepository.js";
-import TeamRepository from "./data/repository/TeamRepository.js";
-import UserMongooseRepository from "./data/repository/UserMongooseRepository.js";
+
+import CompetitionRepository from "./data/repository/CompetitionRepository";
+import TeamRepository from "./data/repository/TeamRepository";
+import UserMongooseRepository from "./data/repository/UserMongooseRepository";
+
 
 
 const container = createContainer();
@@ -17,4 +19,5 @@ container.register({
 container.register({
     userRepository: asClass(UserMongooseRepository,{lifetime:Lifetime.SINGLETON})
 })
+
 export default container;

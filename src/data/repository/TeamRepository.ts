@@ -1,8 +1,8 @@
 import axios from "axios";
-import { axiosOptions } from "../../config/index.js";
+import { axiosOptions } from "../../config/index";
 
-import TeamEntity from "../../domain/entities/Team.js";
-import { Team } from '../../domain/interfaces/teamInterfaces.js';
+import TeamEntity from "../../domain/entities/Team";
+import { Team } from '../../domain/interfaces/teamInterfaces';
 
 class TeamRepository{
 

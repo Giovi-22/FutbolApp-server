@@ -1,7 +1,8 @@
-import UserEntity from "../../domain/entities/User.js";
-import User from "../../domain/entities/User.js";
-import { userModel } from "../models/userModel.js";
-import { UserRepository } from "../models/userRepository.interfaces.js";
+import UserEntity from "../../domain/entities/User";
+import { ApiFilter, ObjectIndex } from "../../domain/interfaces/interfaces";
+import { userModel } from "../models/userModel";
+import { UserRepository } from "../models/userRepository.interfaces";
+import { Filters } from '../../domain/interfaces/competitionsInterfaces';
 
 
 class UserMongooseRepository implements UserRepository{
@@ -18,28 +19,27 @@ class UserMongooseRepository implements UserRepository{
 
         })
     }
-/*
-    async findByFilter(filter)
+
+    async findByFilter(filter:ApiFilter)
     {
-        let query = {};
-        query[filter.field]=filter.value;
-        const userDocument = await userModel.findOne(query).populate('role');
+        const query:ObjectIndex ={}
+        query[filter.field] = filter.value;
+        console.log("el filtro es: ",query)
+        
+        const userDocument = await userModel.findOne(query);
         if(!userDocument)
         {
-            throw new Error(`No se encuentra ${filter.field}: ${filter.value}`,{casuse:'Not Found'});
+            throw new Error(`No se encuentra ${filter.field}: ${filter.value}`);
         }
-        return new User({
-            id:userDocument?._id,
+        return new UserEntity({
+            id:userDocument?._id.toString(),
             firstName: userDocument?.firstName,
             lastName: userDocument?.lastName,
             email: userDocument?.email,
-            age:userDocument?.age,
             password:userDocument?.password,
-            cart: userDocument?.cart,
-            role: userDocument?.role
         })
     }
-
+/*
     async findById(uid)
     {
         const user = await userModel.findById(uid);

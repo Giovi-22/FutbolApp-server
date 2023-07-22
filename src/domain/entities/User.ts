@@ -2,7 +2,7 @@ import { User } from "../interfaces/users.interface";
 
 class UserEntity{
 
-    id:string | undefined;
+    id?:string;
     firstName:string;
     lastName:string;
     email:string;

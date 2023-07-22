@@ -15,3 +15,13 @@ export abstract class BaseTeam {
     abstract getCompetition(cid:string):Promise<void>;
     abstract getTeamByName(teamName:string,competitionId:number):Promise<void>;
 }
+
+export interface ApiFilter{
+    field:string,
+    value:string
+}
+
+export interface ObjectIndex{
+    [key:string]:string
+}
+
