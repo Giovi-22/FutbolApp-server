@@ -25,3 +25,8 @@ export interface ObjectIndex{
     [key:string]:string
 }
 
+export interface UserToken{
+    email:string,
+    id?:string
+}
+

@@ -4,11 +4,14 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import cors from 'cors';
 
+
 import '../../domain/interfaces/custom.interfaces'
 import { config } from '../../config'
 import { Application } from './application.interfaces';
 import sessionRouter from '../../routes/sessionRoute';
 import userRouter from '../../routes/userRouter';
+import playerRouter from '../../routes/playerRoute';
+import emailRouter from '../../routes/emailRouter';
 
 
 
@@ -26,8 +29,9 @@ class ExpressApp implements Application{
         this.app.use(express.urlencoded({extended:true}));
         this.app.use(cookieParser());
         this.app.use(cors({
-            origin: true,
-            credentials:true}));
+            origin:'http://localhost:4200',
+            credentials:true
+        }));
         
         this.app.use(session({
             store: MongoStore.create({
@@ -38,17 +42,21 @@ class ExpressApp implements Application{
             resave:false,
             saveUninitialized:false
         }));
+
     }
 
     build(){
         this.app.use('/api/session',sessionRouter);
-        this.app.use('/api/users',userRouter)
+        this.app.use('/api/users',userRouter);
+        this.app.use('/api/players',playerRouter);
+        this.app.use('/api/email',emailRouter);
         //this.app.use(errorHandler);
     }
 
     listen(){
         this.app.listen(config.appPort,()=>console.log(`Servidor escuchando en el puerto ${config.appPort}`));
     }
+
 
 }
 

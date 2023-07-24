@@ -21,7 +21,7 @@ class SessionManager{
         {
             throw new Error('Login failed, invalid password!');
         }
-        const userAccessToken = await jwtGenerator({...userDB,password:""})
+        const userAccessToken = await jwtGenerator({email:userDB.email,id:userDB.id})
         return userAccessToken;
     }
 

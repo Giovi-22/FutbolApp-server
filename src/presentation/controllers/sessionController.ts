@@ -1,6 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import SessionManager from "../../domain/managers/SessionManager";
 import UserEntity from "../../domain/entities/User";
+import { jwtGenerator } from "../../helpers/jsonwebtoken";
+import EmailManager from "../../domain/managers/EmailMangaer";
+import UserManager from '../../domain/managers/UserManager';
 
 class SessionController{
 
@@ -16,8 +19,10 @@ class SessionController{
             console.log("Realizando login de: ",user)
             const sessionM = new SessionManager();
             const accessToken = await sessionM.logIn(user);
-            return res.cookie('user',accessToken,{maxAge:(60*1000)*10}).send({message:'Login success',data:accessToken});
+            const refreshToken = await jwtGenerator({email:user.email,id:user.id},"15m");
+            res.cookie('user',refreshToken,{maxAge:(60*1000)*15,httpOnly:true}).send({status: true,message:'Login success',data:accessToken});
         } catch (error) {
+            res.status(404).send({status: false,message:`${error}`,data:""})
             return console.log("Error al loguearse ",error);
         }
     }
@@ -26,6 +31,7 @@ class SessionController{
     {
         try
         {
+            const emailM = new EmailManager();
             const user= new UserEntity({
                 email: req.body.email,
                 password: req.body.password,
@@ -34,7 +40,8 @@ class SessionController{
             })
             const sessionM = new SessionManager();
             const newUser = await sessionM.signUp(user);
-            res.status(201).send({status:'success',data:newUser});
+            await emailM.send(newUser.email,"User created successfully",newUser);
+            res.status(201).send({status:true,data:newUser,message:"User created!"});
         }
         catch (error)
         {
@@ -61,6 +68,22 @@ class SessionController{
         }
     }
 
+    static async current(req:Request,res:Response,next:NextFunction){
+        try {
+            console.log("dentro de current",req.user)
+            res.status(200).send({status:'success',data:req.user})
+        } catch (error) {
+            return next(error);
+        }
+    }
+
+    static async forgotPassword(req:Request,res:Response,next:NextFunction){
+        try {
+            
+        } catch (error) {
+            
+        }
+    }
 
 }
 
