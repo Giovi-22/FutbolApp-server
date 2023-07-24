@@ -20,16 +20,15 @@ class UserMongooseRepository implements UserRepository{
         })
     }
 
-    async findByFilter(filter:ApiFilter)
+    async findByFilter(filter:ApiFilter):Promise<UserEntity| Error>
     {
         const query:ObjectIndex ={}
         query[filter.field] = filter.value;
-        console.log("el filtro es: ",query)
         
         const userDocument = await userModel.findOne(query);
         if(!userDocument)
         {
-            throw new Error(`No se encuentra ${filter.field}: ${filter.value}`);
+            return new Error("El usuario no existe");
         }
         return new UserEntity({
             id:userDocument?._id.toString(),

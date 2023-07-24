@@ -4,6 +4,7 @@ import UserEntity from "../../domain/entities/User";
 import { jwtGenerator } from "../../helpers/jsonwebtoken";
 import EmailManager from "../../domain/managers/EmailMangaer";
 import UserManager from '../../domain/managers/UserManager';
+import session from 'express-session';
 
 class SessionController{
 
@@ -40,7 +41,7 @@ class SessionController{
             })
             const sessionM = new SessionManager();
             const newUser = await sessionM.signUp(user);
-            await emailM.send(newUser.email,"User created successfully",newUser);
+            await emailM.send(newUser.email,"User created successfully",{user:newUser},"userCreated.hbs");
             res.status(201).send({status:true,data:newUser,message:"User created!"});
         }
         catch (error)
@@ -79,9 +80,19 @@ class SessionController{
 
     static async forgotPassword(req:Request,res:Response,next:NextFunction){
         try {
-            
+            const userM = new UserManager();
+            const user = await userM.findByFilter({field:"email",value:req.body.email});
+
+            if(user instanceof Error){
+                return res.status(404).send({status:"failed",message:user.message})
+            }else{
+                const emailM = new EmailManager();
+                const jwtForgotPassword = await jwtGenerator(req.user,"2min");
+                emailM.send(user.email,"Change password",{user:user,jwt:jwtForgotPassword},"forgotPassword.hbs") 
+            }
+            return res.status(200).send({status:"success",message:"Se ha enviado un email para restablecer la contraseña"})
         } catch (error) {
-            
+           return next(error);
         }
     }
 

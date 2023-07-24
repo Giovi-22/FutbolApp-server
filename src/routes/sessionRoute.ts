@@ -8,6 +8,6 @@ const sessionRouter = Router();
 sessionRouter.post('/login',SessionController.login);
 sessionRouter.post('/signup',SessionController.signup);
 sessionRouter.get('/current',auth,SessionController.current);
-sessionRouter.post('/forgotpassword',auth,SessionController.forgotPassword)
+sessionRouter.post('/forgotpassword',SessionController.forgotPassword)
 sessionRouter.post('/logout',SessionController.logout);
 export default sessionRouter;

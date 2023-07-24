@@ -6,6 +6,7 @@ import path from 'path';
 
 import { config } from '../../config';
 import UserEntity from '../entities/User';
+import { EmailTemplate } from '../interfaces/emailTemplates.interfaces';
 
 
 
@@ -28,24 +29,27 @@ class EmailManager{
         this.#transporter = nodemailer.createTransport(this.#smtpConfig);
     }
 
-    async send(to:string,subject:string,user:UserEntity){
-        
-        const templateDir = path.resolve('src/presentation/templates');
-        const source = (await fs.readFile(`${templateDir}/userCreated.hbs`)).toString();
-        const template = Handlebars.compile(source);
-        const html = template({...user})
+    async send(to:string,subject:string,data:EmailTemplate ,templateHbs:string){
 
+        const template = await this.#selectTemplate(data,templateHbs);
 
         let mail = await this.#transporter.sendMail(
             {
                 from:"giovannibarolin@gmail.com",
                 to:to,
                 subject:subject,
-                //html: templateHtml
-                html
+                html:template
             }
         )
         return mail;
+    }
+
+    async #selectTemplate(data:EmailTemplate,templateHbs:string){
+        const templateDir = path.resolve('src/presentation/templates');
+        const source = (await fs.readFile(`${templateDir}/${templateHbs}`)).toString();
+        const template = Handlebars.compile(source);
+        const html = template(data);
+        return html;
     }
 }
 

@@ -16,6 +16,9 @@ class SessionManager{
     async logIn(user:UserEntity){
         await loginValidation.parseAsync(user);
         const userDB = await this.userM.findByFilter({field:'email',value:user.email});
+        if(userDB instanceof Error){
+            throw new Error("no se encuentra el usuario");
+        }
         const isValid = await verifyPassword(userDB.password,user.password);
         if(!isValid)
         {
@@ -31,6 +34,14 @@ class SessionManager{
         const userM = new UserManager();
         const newUser = await userM.create(user);
         return newUser;
+    }
+
+    async forgotPassword(user:UserEntity){
+            const dbUser = await this.userM.findByFilter({field:"email",value:user.email});
+            if(!dbUser){
+                throw new Error("No se ha encontrado el usuario, Bad Request");
+            }
+
     }
 }
 
