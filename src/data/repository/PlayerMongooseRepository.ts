@@ -51,23 +51,28 @@ class PlayerMongooseRepository implements PlayerRepository{
             lastUpdated: userDocument.lastUpdated, 
             })
     }
-/*
-    async findById(uid)
+
+    async findById(pid:number):Promise<PlayerEntity | Error>
     {
-        const user = await userModel.findById(uid);
-        if(!user)
+        const player = await playerModel.findOne<PlayerEntity>({id:pid});
+        if(!player)
         {
-            throw new Error(`El usuario con id ${uid} no existe`,{cause:'Not Found'});
+            return new Error("No se encuentra el jugador");
         }
-        return new User({
-            id:user?._id,
-            firstName: user?.firstName,
-            lastName: user?.lastName,
-            email: user?.email,
-            age:user?.age
+        return new PlayerEntity({
+            id: player.id,          
+            name: player.name,        
+            firstName: player.firstName,   
+            lastName: player.lastName,    
+            dateOfBirth: player.dateOfBirth, 
+            nationality: player.nationality, 
+            section: player.section,     
+            position: player.position,    
+            shirtNumber: player.shirtNumber, 
+            lastUpdated: player.lastUpdated,
         })
     }
-*/
+
     async deleteOne(uid:string)
     {
         const result = await userModel.deleteOne({_id:uid});

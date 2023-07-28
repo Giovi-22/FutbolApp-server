@@ -1,9 +1,8 @@
+import TeamEntity from "../../domain/entities/Team";
 import UserEntity from "../../domain/entities/User";
 import { ApiFilter, ObjectIndex } from "../../domain/interfaces/interfaces";
 import { userModel } from "../models/userModel";
 import { UserRepository } from "../models/userRepository.interfaces";
-import { Filters } from '../../domain/interfaces/competitionsInterfaces';
-
 
 class UserMongooseRepository implements UserRepository{
 
@@ -15,7 +14,8 @@ class UserMongooseRepository implements UserRepository{
             firstName: newUser.firstName || "",
             lastName: newUser.lastName || "",
             email: newUser.email || "",
-            password: newUser.password || ""
+            password: newUser.password || "",
+            favoriteTeams:newUser.favoriteTeams
 
         })
     }
@@ -24,18 +24,20 @@ class UserMongooseRepository implements UserRepository{
     {
         const query:ObjectIndex ={}
         query[filter.field] = filter.value;
-        
+
         const userDocument = await userModel.findOne(query);
         if(!userDocument)
         {
-            return new Error("El usuario no existe");
+            return new Error("User not found");
         }
+
         return new UserEntity({
-            id:userDocument?._id.toString(),
+            id:(userDocument?._id).toString(),
             firstName: userDocument?.firstName,
             lastName: userDocument?.lastName,
             email: userDocument?.email,
             password:userDocument?.password,
+            favoriteTeams:userDocument.favoriteTeams
         })
     }
 /*
@@ -71,7 +73,7 @@ class UserMongooseRepository implements UserRepository{
         const userDocument = await userModel.findOneAndUpdate({_id:uid},data,{new:true});
         if(!userDocument)
         {
-            throw new Error(`No se encuentra el usuario ${uid}`);
+            throw new Error(`User not found ${uid}`);
         }
         return new UserEntity(
             {
@@ -79,10 +81,30 @@ class UserMongooseRepository implements UserRepository{
                 firstName: userDocument.firstName || "",
                 lastName: userDocument.lastName || "",
                 email: userDocument.email || "",
-                password: userDocument.password || ""
-    
+                password: userDocument.password || "",
+                favoriteTeams:userDocument.favoriteTeams
             })
     }
+
+    async updateTeam(data:Partial<UserEntity>,uid:string):Promise<UserEntity | Error>
+    {
+        const userDocument = await userModel.findOneAndUpdate({_id:uid},data,{new:true});
+        if(!userDocument)
+        {
+            return new Error(`User not found ${uid}`);
+        }
+        return new UserEntity(
+            {
+                id:userDocument._id.toString(),
+                firstName: userDocument.firstName || "",
+                lastName: userDocument.lastName || "",
+                email: userDocument.email || "",
+                password: userDocument.password || "",
+                favoriteTeams : userDocument.favoriteTeams,
+
+            })
+    }
+
 }
 
 export default UserMongooseRepository;

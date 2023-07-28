@@ -1,6 +1,6 @@
 import UserEntity from "../entities/User";
 
 export interface EmailTemplate{
-    user?:UserEntity,
+    user?:Partial<UserEntity>,
     jwt?:string
 }

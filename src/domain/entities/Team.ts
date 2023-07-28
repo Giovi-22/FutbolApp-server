@@ -1,14 +1,24 @@
-import { Team } from "../interfaces/teamInterfaces";
+import mongoose from "mongoose";
+import { TeamDto } from "../interfaces/dto.interfaces";
 
-class TeamEntity{
-        #Team:Team;
+class TeamEntity{    
+    id;    
+    name;    
+    shortName;
+    tla;    
+    logo;
+    mongoId:string;
+    _id?:mongoose.Schema.Types.ObjectId
 
-    constructor(props:Team){
-        this.#Team = props;
+    constructor(team:TeamDto){
+        this.id=        team.id;
+        this.name=      team.name;
+        this.shortName= team.shortName;
+        this.tla=       team.tla;
+        this.logo=      team.logo;
+        this.mongoId=   team.mongoId;
+        this._id = team._id;
     }
 
-    getName(){
-        return this.#Team.name;
-    }
 }
 export default TeamEntity;

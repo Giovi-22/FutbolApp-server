@@ -1,8 +1,8 @@
 import { createContainer, asClass, Lifetime } from "awilix";
 
 import CompetitionRepository from "./data/repository/CompetitionRepository";
-import TeamRepository from "./data/repository/TeamRepository";
 import UserMongooseRepository from "./data/repository/UserMongooseRepository";
+import TeamMongooseRepository from "./data/repository/TeamRepository";
 
 
 
@@ -13,7 +13,7 @@ container.register({
 });
 
 container.register({
-    teamRepository: asClass(TeamRepository,{lifetime:Lifetime.SINGLETON})
+    teamRepository: asClass(TeamMongooseRepository,{lifetime:Lifetime.SINGLETON})
 });
 
 container.register({

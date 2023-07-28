@@ -29,7 +29,7 @@ class ExpressApp implements Application{
         this.app.use(express.urlencoded({extended:true}));
         this.app.use(cookieParser());
         this.app.use(cors({
-            origin:'http://localhost:4200',
+            origin:['http://localhost:4200','http://localhost:4200/change-password'],
             credentials:true
         }));
         

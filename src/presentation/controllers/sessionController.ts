@@ -3,8 +3,7 @@ import SessionManager from "../../domain/managers/SessionManager";
 import UserEntity from "../../domain/entities/User";
 import { jwtGenerator } from "../../helpers/jsonwebtoken";
 import EmailManager from "../../domain/managers/EmailMangaer";
-import UserManager from '../../domain/managers/UserManager';
-import session from 'express-session';
+import UserManager from "../../domain/managers/UserManager";
 
 class SessionController{
 
@@ -15,15 +14,19 @@ class SessionController{
                 email: req.body.email,
                 password: req.body.password,
                 firstName:"",
-                lastName:""
+                lastName:"",
+                favoriteTeams:[]
             })
-            console.log("Realizando login de: ",user)
             const sessionM = new SessionManager();
             const accessToken = await sessionM.logIn(user);
-            const refreshToken = await jwtGenerator({email:user.email,id:user.id},"15m");
-            res.cookie('user',refreshToken,{maxAge:(60*1000)*15,httpOnly:true}).send({status: true,message:'Login success',data:accessToken});
+            const userM = new UserManager();
+            const userLogged = userM.findByFilter({field:user.email,value:user.email});
+            if(userLogged instanceof Error){
+                res.status(401).send({status:'failed',message:"login failed"});
+            }
+            res.status(200).send({status:'success',message:'Login success',data:{token: accessToken, user:userLogged}});
         } catch (error) {
-            res.status(404).send({status: false,message:`${error}`,data:""})
+            res.status(401).send({status:'failed',message:`${error}`})
             return console.log("Error al loguearse ",error);
         }
     }
@@ -37,16 +40,17 @@ class SessionController{
                 email: req.body.email,
                 password: req.body.password,
                 firstName:req.body.firstName,
-                lastName: req.body.lastName
+                lastName: req.body.lastName,
+                favoriteTeams:[]
             })
             const sessionM = new SessionManager();
             const newUser = await sessionM.signUp(user);
             await emailM.send(newUser.email,"User created successfully",{user:newUser},"userCreated.hbs");
-            res.status(201).send({status:true,data:newUser,message:"User created!"});
+            return res.status(201).send({status:'success',data:newUser,message:"User created!"});
         }
         catch (error)
         {
-            next(error);
+            return next(error);
         }
     }
 
@@ -54,15 +58,18 @@ class SessionController{
     {
         try
         {
+            console.log("dentro de logout")
             req.session.destroy((err)=>
             {
                 if(!err)
                 {
-                    return res.status(200).send({status:'success',message:'Logout!'});
+                    return res.status(200).send({status:'success',message:'Logout successfull!'});
                 }
                 throw new Error(`logout failed!, Error: ${err}`);
             });
+            console.log("El usuario ha finalizado la session");
         }
+
         catch (error)
         {
             next(error);
@@ -71,8 +78,12 @@ class SessionController{
 
     static async current(req:Request,res:Response,next:NextFunction){
         try {
-            console.log("dentro de current",req.user)
-            res.status(200).send({status:'success',data:req.user})
+            const userM = new UserManager();
+            const user = await userM.findByFilter({field:"email",value:req.user.email || ""});
+            if(user instanceof Error){
+                res.status(401).send({status:'failed',message:user.message});
+            }
+            res.status(200).send({status:'success',message:"user submitted",data:user});
         } catch (error) {
             return next(error);
         }
@@ -80,17 +91,28 @@ class SessionController{
 
     static async forgotPassword(req:Request,res:Response,next:NextFunction){
         try {
-            const userM = new UserManager();
-            const user = await userM.findByFilter({field:"email",value:req.body.email});
+            const sessionM = new SessionManager();
+            const user = await sessionM.forgotPassword(req.body.email);
 
             if(user instanceof Error){
-                return res.status(404).send({status:"failed",message:user.message})
-            }else{
-                const emailM = new EmailManager();
-                const jwtForgotPassword = await jwtGenerator(req.user,"2min");
-                emailM.send(user.email,"Change password",{user:user,jwt:jwtForgotPassword},"forgotPassword.hbs") 
+                return res.status(401).send({status:"failed",message:user.message})
             }
-            return res.status(200).send({status:"success",message:"Se ha enviado un email para restablecer la contraseña"})
+            return res.status(200).send({status:"success",message:"An email has beent sent to reset the password"})
+        } catch (error) {
+            return res.status(401).send({status:"failed",message:"failed"})
+           //return next(error);
+        }
+    }
+
+    static async changeForgotPassword(req:Request,res:Response,next:NextFunction){
+        try {
+            const {password, confirm, token} = req.body;
+            const sessionM  = new SessionManager();
+            const updatedUser = await sessionM.changeForgotPassword(password,confirm,token);
+            if(updatedUser instanceof Error){
+                return res.status(401).send({status:"failed",message:updatedUser.message})
+            }
+            return res.status(200).send({status:"success",data:updatedUser,message:"Password updated successfully"})
         } catch (error) {
            return next(error);
         }

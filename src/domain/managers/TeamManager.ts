@@ -1,16 +1,30 @@
 
 import container from "../../container";
-import { competitions } from "../../helpers/apiData";
-import { BaseCompetition } from "../interfaces/interfaces";
-import CompetitionManager from "./CompetitionManager";
+import TeamMongooseRepository from "../../data/repository/TeamRepository";
+import TeamEntity from "../entities/Team";
+import { ApiFilter, BaseCompetition } from "../interfaces/interfaces";
+import { TeamRepository } from "../interfaces/repositories/teamReapository.interface";
 import { AwilixContainer } from 'awilix';
 
-class TeamManager{
+class TeamManager implements TeamRepository{
 
-    #TeamRepository:AwilixContainer<BaseCompetition>;
+    #TeamRepository:TeamMongooseRepository;
 
     constructor(){
-        this.#TeamRepository= container.resolve('teamRepository');
+        this.#TeamRepository= new TeamMongooseRepository;
+    }
+
+    async create(team:TeamEntity)
+    {
+        return this.#TeamRepository.create(team);
+    }
+
+    async saveTeam(team:TeamEntity){
+        
+    }
+
+    async findOne(teamId:number){
+        return this.#TeamRepository.getTeam(teamId);
     }
 /*
     async getCompetition(teamId:number){

@@ -29,11 +29,11 @@ class EmailManager{
         this.#transporter = nodemailer.createTransport(this.#smtpConfig);
     }
 
-    async send(to:string,subject:string,data:EmailTemplate ,templateHbs:string){
+    async send(to:string,subject:string,data:EmailTemplate ,templateHbs:string):Promise<any | Error>{
+        try {
+            const template = await this.#selectTemplate(data,templateHbs);
 
-        const template = await this.#selectTemplate(data,templateHbs);
-
-        let mail = await this.#transporter.sendMail(
+            let mail = await this.#transporter.sendMail(
             {
                 from:"giovannibarolin@gmail.com",
                 to:to,
@@ -42,6 +42,11 @@ class EmailManager{
             }
         )
         return mail;
+            
+        } catch (error) {
+            return new Error(`error al enviar el email: ${error}`)
+        }
+        
     }
 
     async #selectTemplate(data:EmailTemplate,templateHbs:string){
