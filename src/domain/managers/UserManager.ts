@@ -105,6 +105,15 @@ async setFavoriteTeam(userEmail:string,team:TeamEntity): Promise<UserEntity | Er
         return favoriteList;
     }
 
+    async removeFavoriteTeam(teamId:number,userEmail:string){
+        const user = await this.findByFilter({field:"email",value:userEmail});
+        if(user instanceof Error){
+            return new Error(user.message);
+        }
+        const teamList = user.favoriteTeams.filter(team=> team.id !== teamId);
+        return this.#UserRepository.updateTeam({favoriteTeams:teamList},user.id ||"");
+    }
+
     
 
     

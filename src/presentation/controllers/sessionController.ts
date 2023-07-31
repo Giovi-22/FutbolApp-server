@@ -22,9 +22,9 @@ class SessionController{
             const userM = new UserManager();
             const userLogged = userM.findByFilter({field:user.email,value:user.email});
             if(userLogged instanceof Error){
-                res.status(401).send({status:'failed',message:"login failed"});
+                res.status(401).send({status:'failed',message:"log-in failed"});
             }
-            res.status(200).send({status:'success',message:'Login success',data:{token: accessToken, user:userLogged}});
+            res.status(200).send({status:'success',message:'Log-in successfully',data:{token: accessToken, user:userLogged}});
         } catch (error) {
             res.status(401).send({status:'failed',message:`${error}`})
             return console.log("Error al loguearse ",error);
@@ -83,6 +83,7 @@ class SessionController{
             if(user instanceof Error){
                 res.status(401).send({status:'failed',message:user.message});
             }
+            console.log("en currente, el user es: ",user)
             res.status(200).send({status:'success',message:"user submitted",data:user});
         } catch (error) {
             return next(error);

@@ -13,7 +13,7 @@ userRouter.post('/',UserController.create);
 userRouter.put('/:uid',auth,UserController.updateOne);
 userRouter.put('/team/set-team',auth,UserController.setFavoriteTeam);
 userRouter.get('/team/get-list',auth,UserController.getFavoriteTeams);
-userRouter.get('/team/remove-team',auth,UserController.removeFavoriteTeam);
+userRouter.get('/team/remove-team/:tid',auth,UserController.removeFavoriteTeam);
 
 
 export default userRouter;

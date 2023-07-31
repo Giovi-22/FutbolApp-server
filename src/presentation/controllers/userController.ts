@@ -129,9 +129,15 @@ class UserController{
 
     static async removeFavoriteTeam(req:Request,res:Response,next:NextFunction){
         try {
+            const teamId = +req.params.tid;
             const userM = new UserManager();
+            const result = userM.removeFavoriteTeam(teamId,req.user.email || "");
+            if(result instanceof Error){
+                return res.status(400).send({status:"failed",data:{},message:"The team could not be removed"});
+            }
+            return res.status(200).send({status:"success",data:result,message:`The favorite team list`});
         } catch (error) {
-
+            return console.log(error);
         }
     }
 }

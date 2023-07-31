@@ -4,6 +4,7 @@ import { jwtVerificator } from "../../helpers/jsonwebtoken";
 
 const auth = async (req:Request,res:Response,next:NextFunction)=>{
     try {
+        console.log("Dentro de auth")
     const authHeader = req.headers?.authorization;
     if(!authHeader){
         throw new Error('Error: authorization has not been sent');
@@ -11,13 +12,13 @@ const auth = async (req:Request,res:Response,next:NextFunction)=>{
     const token = authHeader.split(' ')[1];
     const credential = await jwtVerificator(token);
     if(credential instanceof Error){
-        throw new Error("No se pudieron obtener las credenciales");
+        throw new Error("Credentials don't found!");
     }
 
     req.user = credential;
     next();
     } catch (error) {
-        next(error)
+       res.status(401).send({status:'failed',message:`${error}`})
     }
     
 }
