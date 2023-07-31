@@ -44,6 +44,15 @@ class TeamMongooseRepository implements TeamRepository{
         })
 
     }
+
+    async findByName(teamName:string):Promise<TeamEntity[] | null>{
+            const result = await teamModel.find({name:{$regex:teamName,$options:"i"}});
+            console.log("Los resultados: ",result);
+            if(!result.length){
+                return null;
+            }
+            return result.map(team=> new TeamEntity(team));
+    }
     /*
     async getTeam(teamId:number){
         const result = await axios.get(`${this.#url}/${teamId}`,axiosOptions);

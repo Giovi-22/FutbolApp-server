@@ -12,6 +12,7 @@ import sessionRouter from '../../routes/sessionRoute';
 import userRouter from '../../routes/userRouter';
 import playerRouter from '../../routes/playerRoute';
 import emailRouter from '../../routes/emailRouter';
+import teamRouter from '../../routes/teamsRouter';
 
 
 
@@ -49,6 +50,7 @@ class ExpressApp implements Application{
         this.app.use('/api/users',userRouter);
         this.app.use('/api/players',playerRouter);
         this.app.use('/api/email',emailRouter);
+        this.app.use('/api/teams',teamRouter);
         //this.app.use(errorHandler);
     }
 

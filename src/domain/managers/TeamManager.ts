@@ -1,5 +1,6 @@
 
 import container from "../../container";
+import TeamFootballDataRepository from "../../data/repository/TeamFootballDataRepository";
 import TeamMongooseRepository from "../../data/repository/TeamRepository";
 import TeamEntity from "../entities/Team";
 import { ApiFilter, BaseCompetition } from "../interfaces/interfaces";
@@ -9,9 +10,10 @@ import { AwilixContainer } from 'awilix';
 class TeamManager implements TeamRepository{
 
     #TeamRepository:TeamMongooseRepository;
-
+    #TeamFootballRepo:TeamFootballDataRepository;
     constructor(){
         this.#TeamRepository= new TeamMongooseRepository;
+        this.#TeamFootballRepo = new TeamFootballDataRepository;
     }
 
     async create(team:TeamEntity)
@@ -23,6 +25,21 @@ class TeamManager implements TeamRepository{
         
     }
 
+    async getTeams(limit:number){
+        const result = await this.#TeamFootballRepo.getTeams(limit);
+        if(result instanceof Error){
+            return result;
+        }
+        for await(const team of result){
+            const result = await this.findOne(team.id);
+            if(!result){
+                const result = await this.create(team);
+                console.log("team creado ",result.name);
+            }
+        }
+        return;
+    }
+
     async findOne(teamId:number){
         return this.#TeamRepository.getTeam(teamId);
     }
@@ -31,25 +48,11 @@ class TeamManager implements TeamRepository{
         return this.#TeamRepository.getTeam(teamId);
     }
 */
-/*
-    async getTeamByName(teamName:string,competitionId:number){
-        try {
-            const competitionM = new CompetitionManager();
-            const teams = await competitionM.getTeams(teamName);
-      
-            if(!teams){
-                throw new Error("No existen equipos para esta competicion");
-            }
-            
-            const team = teams.find(team => team.getName().includes(teamName));
-            return team;
-            
-        } catch (error) {
-            console.log(error);
-        }
+    async getTeamByName(teamName:string):Promise<TeamEntity[] | null>{
+           return await this.#TeamRepository.findByName(teamName);
         
     }
-
+/*
     async getTeamName(teamName:string){
         try {
             const competitionM = new CompetitionManager();

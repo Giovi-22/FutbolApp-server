@@ -15,10 +15,12 @@ class CompetitionManager{
     async getCompetition(competitionId:string){
         return this.#CompetitionRepository.getCompetition(competitionId);
     }
-    async getTeams(competitionId:string):Promise<TeamEntity[]>{
+    */
+
+    async getTeams(competitionId:string):Promise<TeamEntity[] | Error>{
         return this.#CompetitionRepository.getTeams(competitionId);
     }
-    */
+
 }
 
 export default CompetitionManager;
