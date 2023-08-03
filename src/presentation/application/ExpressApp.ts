@@ -30,11 +30,11 @@ class ExpressApp implements Application{
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended:true}));
         this.app.use(cookieParser());
-        this.app.use(cors({
-            origin:['http://localhost:4200'],
+        /*this.app.use(cors({
+           // origin:['http://localhost:4200'],
             credentials:true
         }));
-        
+        */
         this.app.use(session({
             store: MongoStore.create({
                 mongoUrl: config.dbUri,
