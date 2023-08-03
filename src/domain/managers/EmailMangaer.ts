@@ -5,7 +5,6 @@ import Handlebars from 'handlebars';
 import path from 'path';
 
 import { config } from '../../config';
-import UserEntity from '../entities/User';
 import { EmailTemplate } from '../interfaces/emailTemplates.interfaces';
 
 

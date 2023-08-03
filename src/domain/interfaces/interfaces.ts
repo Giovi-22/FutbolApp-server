@@ -19,7 +19,7 @@ export abstract class BaseTeam {
 
 export interface ApiFilter{
     field:string,
-    value:string 
+    value:string
 }
 
 export interface ObjectIndex{

@@ -9,7 +9,7 @@ const userRouter = Router();
 
 
 userRouter.get('/',UserController.getOne);              
-userRouter.post('/',UserController.create);            
+userRouter.post('/',auth,UserController.create);            
 userRouter.put('/:uid',auth,UserController.updateOne);
 userRouter.put('/team/set-team',auth,UserController.setFavoriteTeam);
 userRouter.get('/team/get-list',auth,UserController.getFavoriteTeams);

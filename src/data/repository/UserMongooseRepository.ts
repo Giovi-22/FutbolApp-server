@@ -40,23 +40,7 @@ class UserMongooseRepository implements UserRepository{
             favoriteTeams:userDocument.favoriteTeams
         })
     }
-/*
-    async findById(uid)
-    {
-        const user = await userModel.findById(uid);
-        if(!user)
-        {
-            throw new Error(`El usuario con id ${uid} no existe`,{cause:'Not Found'});
-        }
-        return new User({
-            id:user?._id,
-            firstName: user?.firstName,
-            lastName: user?.lastName,
-            email: user?.email,
-            age:user?.age
-        })
-    }
-*/
+
     async deleteOne(uid:string)
     {
         const result = await userModel.deleteOne({_id:uid});

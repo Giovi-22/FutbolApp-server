@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import UserManager from '../../domain/managers/UserManager';
 import UserEntity from '../../domain/entities/User';
-import TeamManager from '../../domain/managers/TeamManager';
+import TeamEntity from '../../domain/entities/Team';
 
 class UserController{
 
@@ -14,7 +14,6 @@ class UserController{
             lastName: req.body.lastName,
             favoriteTeams:[]
         })
-        console.log("El usuario es: ",newUser)
         try
         {
             const uManager = new UserManager();
@@ -23,31 +22,12 @@ class UserController{
         }
         catch (error)
         {
-            next(error);
-            return;
+            const newError:string = `${error}`;
+            return next(newError);
         }
 
     }
-/*
-    static async list(req,res,next)
-    {
-        const options = {
-            ...req.query,
-            query: JSON.parse(`{${req.query?.filter ?? ""}}`)
-        }
-        
-        try
-        {
-            const uManager = new UserManager();
-            const result = await uManager.getList(options);
-            return res.status(200).json({status:"success",data:result.docs, ...result, docs:undefined });
-        }
-        catch (error)
-        {
-            next(error);
-        }
-    }
-*/
+
     static async getOne(req:Request,res:Response,next:NextFunction)
     {
 
@@ -62,7 +42,8 @@ class UserController{
         } 
         catch (error)
         {
-            return next(error);
+            const newError:string = `${error}`;
+            return next(newError);
         }
     }
 
@@ -78,37 +59,29 @@ class UserController{
         }
         catch (error)
         {
-            return next(error);
+            const newError:string = `${error}`;
+            return next(newError);
         }
     }
-/*
-    static async deleteOne(req,res,next)
-    {
-        const uid = req.params.uid;
-        try
-        {
-            const uManager = new UserManager();
-            const result = await uManager.deleteOne(uid);
-            return res.status(200).json({status:"success",message:result.message});
-        }
-        catch (error)
-        {
-            next(error);
-        }
-    }
-    */
+
 
     static async setFavoriteTeam(req:Request,res:Response,next:NextFunction){
         try {
-            console.log("el body: ",req.body)
+            const {team} = req.body;
+            const newTeam = new TeamEntity({
+                id:team.id,
+                logo:team.logo,
+                mongoId:"",
+                name:team.name,
+                shortName:team.shortName,
+                tla:team.tla,
+            })
             const userM = new UserManager();
-            const teamM = new TeamManager();
-            //const newTeam = await teamM.create(req.body.team);
-           const result = await userM.setFavoriteTeam(req.user.email|| "",req.body);
-           console.log("Usuario resultante: ",result);
-           return res.status(200).json({status:"success",data:result,message:"Usuario actualizado!"});
+            const result = await userM.setFavoriteTeam(req.user.email|| "",newTeam);
+            return res.status(200).json({status:"success",data:result,message:"Usuario actualizado!"});
         } catch (error) {
-            return console.log("El error es: ",error)
+            const newError:string = `${error}`;
+            return next(newError);
         }
     }
 
@@ -119,11 +92,10 @@ class UserController{
             if(teamsList instanceof Error){
                 return res.status(400).send({status:"failed",data:{},message:`The user don't have favorite teams`});
             }
-            console.log("Lista de equipos favoritos: ",teamsList);
             return res.status(200).send({status:"success",data:teamsList,message:`The favorite team list`});
-            
         } catch (error) {
-          return console.log(error)  
+            const newError:string = `${error}`;
+            return next(newError);
         }
     }
 
@@ -131,13 +103,14 @@ class UserController{
         try {
             const teamId = +req.params.tid;
             const userM = new UserManager();
-            const result = userM.removeFavoriteTeam(teamId,req.user.email || "");
+            const result = await userM.removeFavoriteTeam(teamId,req.user.email || "");
             if(result instanceof Error){
                 return res.status(400).send({status:"failed",data:{},message:"The team could not be removed"});
             }
             return res.status(200).send({status:"success",data:result,message:`The favorite team list`});
         } catch (error) {
-            return console.log(error);
+            const newError:string = `${error}`;
+            return next(newError);
         }
     }
 }

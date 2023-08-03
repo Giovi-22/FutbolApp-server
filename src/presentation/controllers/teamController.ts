@@ -1,9 +1,10 @@
-import { Request,Response } from "express";
+import { NextFunction, Request,Response } from "express";
 import TeamManager from "../../domain/managers/TeamManager";
+import PlayerManager from "../../domain/managers/PlayerManager";
 
 class TeamController{
 
-    static async getTeams(req:Request,res:Response){       
+    static async getApiTeams(req:Request,res:Response,next:NextFunction){       
        try {
             const limit = +req.params.limit;
             const teamM = new TeamManager();
@@ -13,24 +14,43 @@ class TeamController{
             }
             res.status(200).send({status:"success",data:"teams"});
         } catch (error) {
-            console.log(error);
+            const newError:string = `${error}`;
+            return next(newError);
         }
     }
 
-    static async getTeamByName(req:Request,res:Response){
+    static async getTeamByName(req:Request,res:Response,next:NextFunction){
 
-        console.log("Team name: ",req.params)
+        console.log("Team name: ",req.params.teamName)
         try {
             const teamName = req.params.teamName;   
             const manager = new TeamManager();
             const teams = await manager.getTeamByName(teamName);
             if(!teams){
-                res.status(404).send({status:"failed",message:"Teams don't found"});
+                return res.status(404).send({status:"failed",message:"Teams don't found"});
             }
-            res.status(200).send({status:"success",message:"teams finded!",data:teams});
+            return res.status(200).send({status:"success",message:"teams finded!",data:teams});
         } catch (error) {
-            console.log(error);
+            const newError:string = `${error}`;
+            return next(newError);
         }
+    }
+
+    static async getListOfPlayers(req:Request,res:Response,next:NextFunction){
+        try {
+            const playersList = req.body.players;
+            const playerM = new PlayerManager();
+            const result = await playerM.getList(playersList);
+            if(result instanceof Error){
+                return res.status(404).send({status:"failed",message:"Players don't found",data:{}});
+            }
+            return res.status(200).send({status:'success',message:"The player list",data:result})
+        
+        } catch (error) {
+            const newError:string = `${error}`;
+            return next(newError);
+        }
+        
     }
     
 

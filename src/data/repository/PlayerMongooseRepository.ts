@@ -1,8 +1,5 @@
-import UserEntity from "../../domain/entities/User";
 import { ApiFilter, ObjectIndex } from "../../domain/interfaces/interfaces";
 import { userModel } from "../models/userModel";
-import { UserRepository } from "../models/userRepository.interfaces";
-import { Filters } from '../../domain/interfaces/competitionsInterfaces';
 import { PlayerRepository } from "../models/playerRepository.interface";
 import PlayerEntity from "../../domain/entities/Player";
 import { playerModel } from "../models/playerModel";
@@ -37,6 +34,27 @@ class PlayerMongooseRepository implements PlayerRepository{
         if(!userDocument)
         {
             throw new Error(`No se encuentra ${filter.field}: ${filter.value}`);
+        }
+        return  new PlayerEntity({
+            id: userDocument.id,          
+            name: userDocument.name,        
+            firstName: userDocument.firstName,   
+            lastName: userDocument.lastName,    
+            dateOfBirth: userDocument.dateOfBirth, 
+            nationality: userDocument.nationality, 
+            section: userDocument.section,     
+            position: userDocument.position,    
+            shirtNumber: userDocument.shirtNumber, 
+            lastUpdated: userDocument.lastUpdated, 
+            })
+    }
+
+    async findByPlayerId(playerId:number):Promise<PlayerEntity | Error>
+    {
+        const userDocument = await playerModel.findOne({id:playerId});
+        if(!userDocument)
+        {
+            return new Error(`Player don't found`);
         }
         return  new PlayerEntity({
             id: userDocument.id,          

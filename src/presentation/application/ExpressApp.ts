@@ -13,6 +13,7 @@ import userRouter from '../../routes/userRouter';
 import playerRouter from '../../routes/playerRoute';
 import emailRouter from '../../routes/emailRouter';
 import teamRouter from '../../routes/teamsRouter';
+import { errorHandler } from '../middlewares/errorHandler';
 
 
 
@@ -51,7 +52,7 @@ class ExpressApp implements Application{
         this.app.use('/api/players',playerRouter);
         this.app.use('/api/email',emailRouter);
         this.app.use('/api/teams',teamRouter);
-        //this.app.use(errorHandler);
+        this.app.use(errorHandler);
     }
 
     listen(){

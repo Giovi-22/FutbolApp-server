@@ -1,11 +1,8 @@
-import axios from "axios";
-import { axiosOptions } from "../../config/index";
 
 import TeamEntity from "../../domain/entities/Team";
-import { Team } from '../../domain/interfaces/teamInterfaces';
+
 import { TeamRepository } from "../../domain/interfaces/repositories/teamReapository.interface";
 import { teamModel } from '../models/teamModel';
-import { TeamDto } from "../../domain/interfaces/dto.interfaces";
 
 class TeamMongooseRepository implements TeamRepository{
 
@@ -28,6 +25,7 @@ class TeamMongooseRepository implements TeamRepository{
     }
 
     async getTeam(teamId:number):Promise<TeamEntity | null>{
+        console.log("el team id es: ",teamId)
         const result = await teamModel.findOne<TeamEntity>({id:teamId});
         console.log("equipo en el repo: ",result)
         if(!result){
@@ -53,16 +51,7 @@ class TeamMongooseRepository implements TeamRepository{
             }
             return result.map(team=> new TeamEntity(team));
     }
-    /*
-    async getTeam(teamId:number){
-        const result = await axios.get(`${this.#url}/${teamId}`,axiosOptions);
-        return new TeamEntity(result.data);
-    }
-    async getTeams(teamId:number):Promise<TeamEntity[]>{
-        const result = await axios.get(`${this.#url}/${teamId}/teams`,axiosOptions);
-        return result.data.teams.map((team:Team)=> new TeamEntity(team));
-    }
-    */
+
 }
 
 export default TeamMongooseRepository;

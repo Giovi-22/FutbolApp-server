@@ -5,7 +5,6 @@ import { userZodSchema } from "../../helpers/zodValidators";
 import TeamEntity from "../entities/Team";
 import UserEntity from "../entities/User";
 import { ApiFilter } from "../interfaces/interfaces";
-import { User } from "../interfaces/users.interface";
 import TeamManager from "./TeamManager";
 
 
@@ -33,13 +32,7 @@ class UserManager
             favoriteTeams:result.favoriteTeams
         })
     }
-/*
-    async getList(filters)
-    {
-        const result = await this.#UserRepository.Paginate(filters);
-        return result;
-    }
-*/
+
     async findByFilter(filter:ApiFilter):Promise<UserEntity | Error>
     {
         if(!filter.field && !filter.value)
@@ -49,33 +42,18 @@ class UserManager
         const result = await this.#UserRepository.findByFilter(filter);
         return result;
     }
-    /*
-    async getById(uid)
-    {
-        await idValidation.parseAsync(uid);
-        const user = await this.#UserRepository.findById(uid);
-        return user;
-    }
-*/
+
     async updateOne(uid:string,data:UserEntity)
     {
-        //await idValidation.parseAsync(uid);
         const userUpdated = await this.#UserRepository.update(uid,data);
         return userUpdated;
     }
-    /*
-    async deleteOne(uid)
-    {
-        await idValidation.parseAsync(uid);
-        const deletedUser = await this.#UserRepository.deleteOne(uid);
-        return deletedUser;
-    }
-*/
-async setFavoritePlayer(playerId: string): Promise<string> {
-    return new Promise((resolve,reject)=>resolve(""));
-}
 
-async setFavoriteTeam(userEmail:string,team:TeamEntity): Promise<UserEntity | Error> {
+    async setFavoritePlayer(playerId: string): Promise<string> {
+        return new Promise((resolve,reject)=>resolve(""));
+    }
+
+    async setFavoriteTeam(userEmail:string,team:TeamEntity): Promise<UserEntity | Error> {      
     const user = await this.findByFilter({field:"email",value:userEmail});
     if(user instanceof Error){
         return new Error(user.message);

@@ -1,9 +1,7 @@
-import container from "../../container";
 import { hashPassword, verifyPassword } from "../../helpers/bcrypt";
 import { jwtGenerator, jwtVerificator } from "../../helpers/jsonwebtoken";
 import { loginValidation, userZodSchema } from "../../helpers/zodValidators";
 import UserEntity from "../entities/User";
-import { Credentials } from "../interfaces/users.interface";
 import EmailManager from "./EmailMangaer";
 import UserManager from "./UserManager";
 

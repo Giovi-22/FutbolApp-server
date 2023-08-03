@@ -16,9 +16,9 @@ const auth = async (req:Request,res:Response,next:NextFunction)=>{
     }
 
     req.user = credential;
-    next();
+    return next();
     } catch (error) {
-       res.status(401).send({status:'failed',message:`${error}`})
+       return res.status(401).send({status:'failed',message:`${error}`})
     }
     
 }
