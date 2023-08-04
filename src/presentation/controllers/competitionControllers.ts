@@ -1,20 +1,23 @@
-import { Response,Request } from "express";
+import { Response,Request, NextFunction } from "express";
 
-import CompetitionManager from "../../domain/managers/CompetitionManager.js";
+import CompetitionManager from "../../domain/managers/CompetitionManager";
+
 
 
 class CompetitionController{
 
-    static async getCompetition(req:Request,res:Response){
+    static async getCompetition(req:Request,res:Response, next:NextFunction){
         try {
-            /*
+            
             console.log("params: ",req.params.cid)
             const manager = new CompetitionManager();
             const competition = await manager.getCompetition(req.params.cid);
-            res.status(200).send({status:"success",data:competition});
-            */
+            if(competition instanceof Error){
+                return res.status(400).send({status:'failed',messge:'Competition not found'});
+            }
+            return res.status(200).send({status:"success",data:competition});
         } catch (error) {
-            console.log(error);
+           return next(error);
         }
     }
     

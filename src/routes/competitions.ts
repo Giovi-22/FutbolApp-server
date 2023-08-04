@@ -1,11 +1,11 @@
 import { Router } from "express";
 import CompetitionController from "../presentation/controllers/competitionControllers";
 
-const competitionRoute = Router();
+const competitionRouter = Router();
 
 
-competitionRoute.get('/competition/:cid',CompetitionController.getCompetition);
-competitionRoute.get('/competition/:cid/teams',CompetitionController.getTeams);
+competitionRouter.get('/competition/:cid',CompetitionController.getCompetition);
+competitionRouter.get('/competition/:cid/teams',CompetitionController.getTeams);
 
 
-export default competitionRoute;
+export default competitionRouter;

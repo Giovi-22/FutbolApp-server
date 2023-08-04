@@ -6,17 +6,21 @@ import TeamEntity from "../../domain/entities/Team";
 import { Team } from "../../domain/interfaces/teamInterfaces";
 import { Competitions } from "../../domain/interfaces/competitionsInterfaces";
 
-class CompetitionRepository extends BaseCompetition{
+class CompetitionRepository implements BaseCompetition{
 
     #url:string;
 
     constructor(){
-        super();
         this.#url= 'https://api.football-data.org/v4/competitions';
     }
     async getCompetition(competitionId:string){
-        const result = await axios.get(`${this.#url}/${competitionId}`,axiosOptions);
-        return new CompetitionEntity(result.data);
+        try {
+            const result = await axios.get(`${this.#url}/${competitionId}`,axiosOptions);
+            return result.data;
+        } catch (error) {
+            return new Error(`${error}`);
+        }
+
     }
     async getTeams(competitionId:string):Promise<TeamEntity[] | Error>{
         const result = await axios.get<Competitions>(`${this.#url}/${competitionId}/teams`,axiosOptions);  

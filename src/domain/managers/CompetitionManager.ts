@@ -1,5 +1,5 @@
-import container from "../../container.js"
-import { BaseCompetition } from "../interfaces/interfaces.js";
+import container from "../../container"
+import { BaseCompetition } from "../interfaces/interfaces";
 import TeamEntity from '../entities/Team';
 
 
@@ -10,6 +10,10 @@ class CompetitionManager{
 
     constructor(){
         this.#CompetitionRepository = container.resolve('competitionRepository');
+    }
+
+    async getCompetition(competitionCode:string){
+        return this.#CompetitionRepository.getCompetition(competitionCode);
     }
 
     async getTeams(competitionId:string):Promise<TeamEntity[] | Error>{
