@@ -19,8 +19,8 @@ class TeamManager implements TeamRepository{
         return this.#TeamRepository.create(team);
     }
 
-    async saveTeam(team:TeamEntity){
-        
+    async getTeam(teamCode:number){
+        return this.#TeamFootballRepo.getTeam(teamCode);
     }
 
     async getTeams(limit:number){

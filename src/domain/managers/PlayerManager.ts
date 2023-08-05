@@ -45,18 +45,20 @@ class PlayerManager
         return this.#PlayerRepository.create(newPlayer);
     }
 
-    async getList(playersId:number[]):Promise<PlayerEntity[] | Error>
+    async getList(playersId:number[]):Promise<PlayerEntity[]>
     {
         let playerList:PlayerEntity[] = [];
         for await(const playerId of playersId){
             const result = await this.#PlayerRepository.findByPlayerId(playerId);
-            if(result instanceof Error){
-                return new Error(result.message);
+            console.log("El jugador es: ",result)
+            if(!result){
+                console.log("no se encuentra el jugador ")
             }
             if(result){
                 playerList.push(result)
             }
         }
+        console.log("La lista de jugadores es: ",playerList)
         return playerList;
         
     }

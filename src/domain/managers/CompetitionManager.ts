@@ -1,6 +1,7 @@
 import container from "../../container"
-import { BaseCompetition } from "../interfaces/interfaces";
+import { ApiFootballDataFilters, BaseCompetition } from "../interfaces/interfaces";
 import TeamEntity from '../entities/Team';
+import { ErrorFootballData } from "../interfaces/competitionsInterfaces";
 
 
 
@@ -12,11 +13,19 @@ class CompetitionManager{
         this.#CompetitionRepository = container.resolve('competitionRepository');
     }
 
-    async getCompetition(competitionCode:string){
-        return this.#CompetitionRepository.getCompetition(competitionCode);
+    async getCompetition(competitionCode:string,filter?:ApiFootballDataFilters){
+        return this.#CompetitionRepository.getCompetition(competitionCode,filter);
     }
 
-    async getTeams(competitionId:string):Promise<TeamEntity[] | Error>{
+    async getCompetitionStanding(competitionCode:string,filter:ApiFootballDataFilters){
+        return this.#CompetitionRepository.getStandings(competitionCode,filter);
+    }
+
+    async getMatches(competitionCode:string,filter?:ApiFootballDataFilters){
+        return this.#CompetitionRepository.getMatches(competitionCode,filter);//265470
+    }
+
+    async getTeams(competitionId:string){
         return this.#CompetitionRepository.getTeams(competitionId);
     }
 

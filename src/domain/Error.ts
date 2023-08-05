@@ -1,0 +1,13 @@
+
+class MyErrors extends Error{
+
+    status:number;
+
+    constructor(message:string,status:number){
+        super(message);
+        this.status = status;
+        this.name = "MyErrors";
+    }
+}
+
+export default MyErrors;

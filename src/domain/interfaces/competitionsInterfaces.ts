@@ -71,3 +71,8 @@ export enum Type {
 export interface Filters {
     client: string;
 }
+
+export interface ErrorFootballData{
+    message:string,
+    errorCode:number
+}

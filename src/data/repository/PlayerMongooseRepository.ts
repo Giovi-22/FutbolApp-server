@@ -49,12 +49,12 @@ class PlayerMongooseRepository implements PlayerRepository{
             })
     }
 
-    async findByPlayerId(playerId:number):Promise<PlayerEntity | Error>
+    async findByPlayerId(playerId:number):Promise<PlayerEntity | null>
     {
         const userDocument = await playerModel.findOne({id:playerId});
         if(!userDocument)
         {
-            return new Error(`Player don't found`);
+            return null
         }
         return  new PlayerEntity({
             id: userDocument.id,          
