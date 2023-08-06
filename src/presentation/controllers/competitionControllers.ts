@@ -16,6 +16,7 @@ class CompetitionController{
             const manager = new CompetitionManager();
             const competition = await manager.getCompetition(req.params.cid,filter);
             if(competition instanceof MyErrors){
+                console.log("el error en competition: ",competition)
                 return res.status(competition.status).send({status:'failed',message:competition.message});
             }
             console.log("los resultados: ",competition);
@@ -34,6 +35,7 @@ class CompetitionController{
             const manager = new CompetitionManager();
             const competition = await manager.getCompetitionStanding(req.params.cid,filter);
             if(competition instanceof MyErrors){
+                console.log("el error en standings: ",competition)
                 return res.status(competition.status).send({status:'failed',message:competition.message});
             }
             return res.status(200).send({status:"success",message:"Standings finded",data:competition});
@@ -51,6 +53,7 @@ class CompetitionController{
             const manager = new CompetitionManager();
             const matches = await manager.getMatches(req.params.cid,filter);
             if(matches instanceof MyErrors){
+                console.log("el error en matches: ",matches)
                 return res.status(matches.status).send({status:'failed',message:matches.message});
             }
             return res.status(200).send({status:"success",message:"Matches finded",data:matches});
