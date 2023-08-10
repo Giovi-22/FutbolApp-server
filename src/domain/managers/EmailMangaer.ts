@@ -49,7 +49,7 @@ class EmailManager{
     }
 
     async #selectTemplate(data:EmailTemplate,templateHbs:string){
-        const templateDir = path.resolve('src/presentation/templates');
+        const templateDir = path.resolve('src/presentation/views/templates');
         const source = (await fs.readFile(`${templateDir}/${templateHbs}`)).toString();
         const template = Handlebars.compile(source);
         const html = template(data);

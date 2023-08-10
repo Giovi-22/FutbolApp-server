@@ -35,17 +35,17 @@ class SessionManager{
         return newUser;
     }
 
-    async forgotPassword(email:string):Promise<UserEntity | Error>{
+    async forgotPassword(email:string,serverUrl:string):Promise<UserEntity | Error>{
             const dbUser = await this.userM.findByFilter({field:"email",value:email});
             if(dbUser instanceof Error){
                 return new Error("No se ha encontrado el usuario");
             }
             const emailM = new EmailManager();
-            const jwtForgotPassword = await jwtGenerator(dbUser,"1min");
+            const jwtForgotPassword = await jwtGenerator(dbUser,"5min");
             if(jwtForgotPassword instanceof Error){
                 return new Error(jwtForgotPassword.message);
             }
-            const result = await emailM.send(dbUser.email,"Change password",{user:dbUser,jwt:jwtForgotPassword},"forgotPassword.hbs") 
+            const result = await emailM.send(dbUser.email,"Change password",{user:dbUser,jwt:jwtForgotPassword,url:serverUrl},"forgotPassword.hbs") 
             if(result instanceof Error){
                 return new Error(result.message)
             }

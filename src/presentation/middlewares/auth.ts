@@ -4,7 +4,6 @@ import { jwtVerificator } from "../../helpers/jsonwebtoken";
 
 const auth = async (req:Request,res:Response,next:NextFunction)=>{
     try {
-        console.log("Dentro de auth")
     const authHeader = req.headers?.authorization;
     if(!authHeader){
         throw new Error('Error: authorization has not been sent');

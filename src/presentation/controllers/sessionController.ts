@@ -90,20 +90,31 @@ class SessionController{
 
     static async forgotPassword(req:Request,res:Response,next:NextFunction){
         try {
+            const serverUrl = `${req.protocol}://${req.get('host')}`;
             const sessionM = new SessionManager();
-            const user = await sessionM.forgotPassword(req.body.email);
+            const user = await sessionM.forgotPassword(req.body.email,serverUrl);
 
             if(user instanceof Error){
                 return res.status(401).send({status:"failed",message:user.message})
             }
             return res.status(200).send({status:"success",message:"An email has beent sent to reset the password"})
+            
         } catch (error) {
             const newError:string = `${error}`;
             return next(newError);
         }
     }
 
-    static async changeForgotPassword(req:Request,res:Response,next:NextFunction){
+    static async changePassword(req:Request,res:Response,next:NextFunction){
+        try {
+            res.render('restorePassword');
+        } catch (error) {
+            const newError:string = `${error}`;
+            return next(newError);
+        } 
+    }
+
+    static async restorePassword(req:Request,res:Response,next:NextFunction){
         try {
             const {password, confirm, token} = req.body;
             const sessionM  = new SessionManager();
@@ -111,7 +122,7 @@ class SessionController{
             if(updatedUser instanceof Error){
                 return res.status(401).send({status:"failed",message:updatedUser.message})
             }
-            return res.status(200).send({status:"success",data:updatedUser,message:"Password updated successfully"})
+            return res.status(200).send({status:"success",data:req.body,message:"Password updated successfully"})
         } catch (error) {
             const newError:string = `${error}`;
             return next(newError);

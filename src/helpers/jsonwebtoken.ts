@@ -12,7 +12,6 @@ export const jwtGenerator = async(user:UserToken,expire:string='10m'):Promise<st
 export async function jwtVerificator (token: string):Promise<Partial<User> | Error>{
     try {
       const decoded = jwt.verify(token, config.jwtKey) as JwtPayload;
-      console.log("el token decodificado: ",decoded)
       return { 
         id: decoded.user.id, 
         firstName: decoded.user.firstName,
@@ -21,7 +20,6 @@ export async function jwtVerificator (token: string):Promise<Partial<User> | Err
         password: decoded.user.password,
      };
     } catch (error) {
-      console.error('Error al verificar el token');
       return new Error('Error al verificar el token');
     }
 }
