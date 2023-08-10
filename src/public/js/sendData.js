@@ -30,6 +30,9 @@ const requestOptions = {
       if(response.status <= 400){
         sendButton.removeChild(sendButton.querySelector('span'));
         toastr('success',"successfully restore the password");
+        setTimeout(()=>{
+          window.location.href = "https://main--chic-duckanoo-ad7ca7.netlify.app"
+        },4000)
       }else{
         sendButton.removeChild(sendButton.querySelector('span'));
         toastr('failed',`Failed to restore the password, error: ${response.status}`);

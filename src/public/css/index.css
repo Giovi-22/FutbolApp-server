@@ -53,6 +53,7 @@ button{
     text-transform: uppercase;
     background-color: #9fc1316b;
     border: 3px solid transparent;
+    cursor: pointer;
 
 }
 
