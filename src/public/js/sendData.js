@@ -25,7 +25,7 @@ const requestOptions = {
 };
 
     sendButton.appendChild(spinner);
-    fetch(`http://${window.location.href.split('/')[2]}/api/session/restorepassword`, requestOptions)
+    fetch(`${window.location.href.split('/')[0]}//${window.location.href.split('/')[2]}/api/session/restorepassword`, requestOptions)
     .then((response)=>{
       if(response.status <= 400){
         sendButton.removeChild(sendButton.querySelector('span'));
