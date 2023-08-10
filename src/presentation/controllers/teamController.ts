@@ -44,7 +44,7 @@ class TeamController{
             const manager = new TeamManager();
             const teams = await manager.getTeamByName(teamName);
             if(!teams){
-                return res.status(404).send({status:"failed",message:"Teams don't found"});
+                return res.status(200).send({status:"failed",message:"Teams don't found",data:[]});
             }
             return res.status(200).send({status:"success",message:"teams finded!",data:teams});
         } catch (error) {
